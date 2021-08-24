@@ -6,12 +6,15 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
+# CARDS = {}
+
+# CARDS should of course be empty, but this was to be able to experiment with deleting cards on the page
 CARDS = {0: {'name': "John",
           'surName': "Hansen",
           'telephone': "11223344",
           'email': "jh@gmail.com",
+        #   I haven't managed to add an image in the right format and show it on the page
           'image': 'https://thispersondoesnotexist.com/image'},
-        #   'image': "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII="},
           1: {'name': "Lotte",
           'surName': "Jensen",
           'telephone': "55667788",
@@ -23,31 +26,27 @@ CARDS = {0: {'name': "John",
           'email': "mail",
           'image': 'https://thispersondoesnotexist.com/image'}}
 
-# CARDS = {}
-
 parser = reqparse.RequestParser()
 parser.add_argument('card')
 
 class Index(Resource):
 
     def get(self):
-  
         return jsonify({'message': 'Business card manager'})
 
-    # ? What does this do?
     def post(self):
-          
         data = request.get_json()
         return jsonify({'data': data}), 201
 
 class Cards(Resource):
-    # Read
+    # Read 
+    # This is the default on the page
     def get(self):
         return jsonify(CARDS)
 
     # Create
-    #todo Add image - is it ok?
     # input format = "card=name:_,surName:_,telephone:_,email:_,image:_"
+    # Not implemented in frontend
     def post(self):
         args = parser.parse_args()
         card = args['card']
@@ -62,6 +61,7 @@ class Cards(Resource):
 class Card(Resource):
 
     # Update
+    # Not implemented in frontend
     def put(self, id):
         args = parser.parse_args()
         card = args['card']
@@ -72,6 +72,7 @@ class Card(Resource):
         return card, 201
 
     # Delete
+    # Implemented in frontend by button click
     def delete(self, id):
         del CARDS[id]
         return '', 204

@@ -1,3 +1,11 @@
+h1 {
+    text-indent: 50px;
+}
+
+ul {
+    line-height: 5px;
+  }
+
 li {
     list-style: none;
     width: 300px;
@@ -6,11 +14,8 @@ li {
     border-radius:10px;
     padding: 10px;
     margin: 10px 0;
+    background-color:rgb(243, 241, 241);
 }
-
-ul {
-    line-height: 5px;
-  }
 
 img {
     width: 100%;
