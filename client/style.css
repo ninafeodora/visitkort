@@ -1,0 +1,18 @@
+li {
+    list-style: none;
+    width: 300px;
+    height:auto;
+    border: 1px solid gray;
+    border-radius:10px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+ul {
+    line-height: 5px;
+  }
+
+img {
+    width: 100%;
+    height: auto;
+}
